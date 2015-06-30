@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    	<record id="lib_lib_form_view" model="ir.ui.view">
+    		<field name="name">lib.lib.form.view</field>
+    		<field name="model">lib.lib</field>
+    		<field name="arch" type="xml">
+    			<form string="lib Form View">
+    				<sheet>
+						<group>
+							<field name="Lib_branch"/>
+							<field name="Building_no"/>
+							<field name="street_number"/>
+							<field name="Landmark"/>
+							<field name="pincode"/>
+								
+						</group>
+					</sheet>    			
+    			</form>
+    		</field>
+    	</record>
+    	
+    	<record id="lib_lib_tree_view" model="ir.ui.view">
+    		<field name="name">lib.lib.tree.view</field>
+    		<field name="model">lib.lib</field>
+    		<field name="arch" type="xml">
+    			<tree string="lib Tree View">
+					<field name="Lib_branch"/>
+					<field name="Building_no"/>
+					<field name="street_number"/>
+					<field name="Landmark"/>
+					<field name="pincode"/>
+    			</tree>
+    		</field>
+    	</record>
+    	
+    	<record id="lib_action_menu" model="ir.actions.act_window">
+            <field name="name">Delhi Public Library</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">lib.lib</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    	
+    	
+    	<menuitem id="lib_main_menuitem" sequence="500" name="lib Main"/>
+    	<menuitem id="lib_menuitem" parent="lib_main_menuitem" sequence="2" name="lib Under main"/>
+    	<menuitem id="lib_menu" parent="lib_menuitem" action="lib_action_menu" sequence="2"/>
+    	
+    	<record id="books_books_form_view" model="ir.ui.view">
+    		<field name="name">books.books.form.view</field>
+    		<field name="model">books.books</field>
+    		<field name="arch" type="xml">
+    			<form string="books Form View">
+    				<sheet>
+						<group>
+							<field name="name"/>
+							<field name="author"/>
+							<field name="book_lib_no"/>
+							<field name="book_on_shelf"/>
+							<field name="issued_date"/>
+							<field name="returned_date"/>
+							<field name="book_available_in">
+								<form string="book_available_in">
+									<sheet>
+										<group>
+											<field name="Lib_branch"/>
+											<field name="Building_no"/>
+											<field name="street_number"/>
+											<field name="Landmark"/>
+											<field name="pincode"/>
+											
+										</group>
+									</sheet>	
+								</form>
+								<tree string="book_available_in">
+									<field name="Lib_branch"/>
+								</tree>
+							</field>
+						</group>
+					</sheet>    			
+    			</form>
+    		</field>
+    	</record>
+    	
+    	<record id="books_books_tree_view" model="ir.ui.view">
+    		<field name="name">books.books.tree.view</field>
+    		<field name="model">books.books</field>
+    		<field name="arch" type="xml">
+    			<tree string="books Tree View">
+					<field name="name"/>
+    			</tree>
+    		</field>
+    	</record>
+    	
+    	<record id="books_action_menu" model="ir.actions.act_window">
+            <field name="name">books</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">books.books</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    	
+    	
+   
+    
+    	<menuitem id="books_menu" parent="lib_menuitem" action="books_action_menu" sequence="5"/>
+    	
+    </data>
+</openerp>
